@@ -1,4 +1,4 @@
-package ir.mapsa.student;
+package ir.mapsa.student.student;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

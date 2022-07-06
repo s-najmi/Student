@@ -1,4 +1,4 @@
-package ir.mapsa.student;
+package ir.mapsa.student.student;
 
 import java.util.List;
 

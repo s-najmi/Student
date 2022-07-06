@@ -1,4 +1,4 @@
-package ir.mapsa.student;
+package ir.mapsa.student.student;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

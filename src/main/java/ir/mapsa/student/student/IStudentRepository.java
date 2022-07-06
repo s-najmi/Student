@@ -1,4 +1,4 @@
-package ir.mapsa.student;
+package ir.mapsa.student.student;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

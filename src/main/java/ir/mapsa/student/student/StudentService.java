@@ -1,4 +1,4 @@
-package ir.mapsa.student;
+package ir.mapsa.student.student;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
