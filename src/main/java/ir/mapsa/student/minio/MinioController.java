@@ -1,5 +1,7 @@
 package ir.mapsa.student.minio;
 
+import ir.mapsa.student.student.IStudentService;
+import ir.mapsa.student.student.Student;
 import lombok.AllArgsConstructor;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.MediaType;
@@ -16,17 +18,21 @@ import java.util.Map;
 @AllArgsConstructor
 public class MinioController {
     private final MinioService service;
+    private final IStudentService stService;
 
-    @PostMapping(path= "/upload", consumes= {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public Map<String, String> uploadFile(@RequestPart(value="file",required = false) MultipartFile files) throws Exception{
+    @PostMapping(path= "/upload/{id}", consumes= {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public Map<String, String> uploadFile(@RequestPart(value="file",required = false) MultipartFile files,@PathVariable long id) throws Exception{
         String gKey= service.uploadFile(files);
         Map<String, String> result = new HashMap<>();
         result.put("GeneratedKey",gKey);
+        Student student = stService.getByID(id);
+        student.setPicture(String.valueOf(result));
+        stService.update(student);
         return result;
     }
 
     @GetMapping(path="/download")
-    public ResponseEntity<ByteArrayResource> uploadFile(@RequestParam(value="file") String file) throws IOException{
+    public ResponseEntity<ByteArrayResource> downloadFile(@RequestParam(value="file") String file) throws IOException{
         byte[] data= service.getFile(file);
         ByteArrayResource resource= new ByteArrayResource(data);
         return ResponseEntity

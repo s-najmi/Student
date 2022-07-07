@@ -1,6 +1,5 @@
 server:
   port: 9090
-
 minio:
   bucket:
     name: miniotest
@@ -9,15 +8,12 @@ minio:
   access:
     name: minioadmin
     secret: minioadmin
-
   url: http://127.0.0.1:9000
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/student
     username: postgres
     password: 123456
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql

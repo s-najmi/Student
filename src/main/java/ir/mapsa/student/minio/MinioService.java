@@ -1,11 +1,11 @@
 package ir.mapsa.student.minio;
 
+
 import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.ObjectWriteResponse;
 import io.minio.PutObjectArgs;
 import io.minio.errors.*;
-import lombok.AllArgsConstructor;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 @Service
-@AllArgsConstructor
 public class MinioService {
     private final MinioClient minioClient;
 
@@ -26,6 +25,10 @@ public class MinioService {
 
     @Value("${minio.bucket.default.folder}")
     String defaultBaseFolder;
+
+    public MinioService(MinioClient minioClient) {
+        this.minioClient = minioClient;
+    }
 
     public String uploadFile(MultipartFile files){
         try{

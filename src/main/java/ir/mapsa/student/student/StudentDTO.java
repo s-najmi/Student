@@ -7,6 +7,8 @@ import java.util.Date;
 
 @Data
 public class StudentDTO {
+    @ApiModelProperty(required = false, hidden = true)
+    private long id;
     @ApiModelProperty(required = true, hidden = false)
     private String name;
     @ApiModelProperty(required = true, hidden = false)
