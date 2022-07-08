@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,13 +27,15 @@ public class MinioController {
         Map<String, String> result = new HashMap<>();
         result.put("GeneratedKey",gKey);
         Student student = stService.getByID(id);
-        student.setPicture(String.valueOf(result));
+        student.setPicture(gKey);
         stService.update(student);
         return result;
     }
 
-    @GetMapping(path="/download")
-    public ResponseEntity<ByteArrayResource> downloadFile(@RequestParam(value="file") String file) throws IOException{
+    @GetMapping(path="/download/{id}")
+//    public ResponseEntity<ByteArrayResource> downloadFile(@RequestParam(value="file") String file) throws IOException{IOException
+    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable long id) throws IOException{
+        String file = stService.getByID(id).getPicture();
         byte[] data= service.getFile(file);
         ByteArrayResource resource= new ByteArrayResource(data);
         return ResponseEntity

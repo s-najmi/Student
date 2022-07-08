@@ -18,13 +18,13 @@ public class StudentService implements IStudentService{
 
     @Override
     public Student update(Student student) {
-        Student newStudent = getByID(student.getId());
-        newStudent.setName(student.getName());
-        newStudent.setFamily(student.getFamily());
-        newStudent.setPicture(student.getPicture());
-        newStudent.setBirthDate(student.getBirthDate());
-        newStudent.setNationalCode(student.getNationalCode());
-        return repository.save(newStudent);
+//        Student newStudent = getByID(student.getId());
+//        newStudent.setName(student.getName());
+//        newStudent.setFamily(student.getFamily());
+//        newStudent.setPicture(student.getPicture());
+//        newStudent.setBirthDate(student.getBirthDate());
+//        newStudent.setNationalCode(student.getNationalCode());
+        return repository.save(student);
     }
 
     @Override
